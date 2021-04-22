@@ -57,7 +57,7 @@ to run malicious code in a `terraform plan` using the [`external` data source](h
 or by specifying a malicious provider. This code could then exfiltrate your credentials.
 
 To prevent this, you could:
-1. Bake providers into the Atlantis image or host and deny egress in production.
+1. Bake providers into the Atlantis image or host and deny egress (outside of provider related endpoints) in production.
 1. Implement the provider registry protocol internally and deny public egress, that way you control who has write access to the registry.
 1. Modify your [server-side repo configuration](https://www.runatlantis.io/docs/server-side-repo-config.html)'s `plan` step to validate against the
    use of not allowed providers or data sources or PRs from not allowed users. You could also add in extra validation at this point, e.g.
